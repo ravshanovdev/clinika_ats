@@ -13,6 +13,10 @@ class Statistic(models.Model):
     certificates = models.IntegerField(default=0, blank=True)
     num_strollers = models.IntegerField(default=0, blank=True)
 
+    class Meta:
+        verbose_name = "Statistika"
+        verbose_name_plural = "Statistikalar"
+
     def __str__(self):
         return self.experts
 
@@ -21,6 +25,10 @@ class AboutUs(models.Model):
     title = models.CharField(max_length=155)
     description = models.TextField()
     features = models.ManyToManyField(Features, blank=True)
+
+    class Meta:
+        verbose_name = "Biz haqimizda"
+        verbose_name_plural = "Biz haqimizda"
 
     def __str__(self):
         return self.title
