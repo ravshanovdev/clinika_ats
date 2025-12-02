@@ -28,3 +28,30 @@ class InfoContact(models.Model):
 
     def __str__(self):
         return f"phone1: {self.phone1}"
+
+
+class SendMessage(models.Model):
+    username = models.CharField(max_length=155)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    text = models.TextField(max_length=550)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'habar'
+        verbose_name_plural = "habarlar"
+
+    def __str__(self):
+        return self.username
+
+
+class TgAdmin(models.Model):
+    username = models.CharField(max_length=150)
+    chat_id = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = 'telegram admin'
+        verbose_name_plural = 'telegram_adminlari'
+
+    def __str__(self):
+        return f"{self.username} -- {self.chat_id}"
