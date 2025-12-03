@@ -4,11 +4,16 @@ from rest_framework import status
 from .serializers import SendMessageSerializer, InfoContactSerializer, ReviewSerializer
 from rest_framework.permissions import AllowAny
 from .models import InfoContact, Review
+from drf_yasg.utils import swagger_auto_schema
 
 
 class SendMessageAPIView(APIView):
     permission_classes = [AllowAny]
 
+    @swagger_auto_schema(
+        request_body=SendMessageSerializer,
+        responses={200: 'message sent.!'}
+    )
     def post(self, request):
         serializer = SendMessageSerializer(data=request.data)
         if serializer.is_valid():

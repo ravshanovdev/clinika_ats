@@ -16,7 +16,7 @@ async def start_cmd(msg: types.Message):
             )
         keyboard = ReplyKeyboardMarkup(
             keyboard=[
-                [KeyboardButton(text="/today"), KeyboardButton(text="/week")]
+                [KeyboardButton(text="today"), KeyboardButton(text="week")]
             ],
             resize_keyboard=True
         )
