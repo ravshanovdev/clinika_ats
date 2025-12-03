@@ -37,7 +37,7 @@ class AdditionalFeatures(models.Model):
 class Doctors(models.Model):
     name = models.CharField(max_length=150)
     position = models.ForeignKey(Position, on_delete=models.CASCADE)
-    specialty = models.ForeignKey(Specialty, on_delete=models.CASCADE)
+    specialty = models.ManyToManyField(Specialty, blank=True)
     experience = models.CharField(max_length=150)
     operations = models.CharField(max_length=150)
     certificates = models.ManyToManyField(AdditionalFeatures, blank=True)

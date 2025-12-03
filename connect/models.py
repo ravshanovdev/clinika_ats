@@ -21,6 +21,7 @@ class InfoContact(models.Model):
     email1 = models.EmailField()
     email2 = models.EmailField(blank=True)
     address = models.TextField()
+    address2 = models.TextField(blank=True)
 
     class Meta:
         verbose_name = "a'loqa ma'lumotlari"
