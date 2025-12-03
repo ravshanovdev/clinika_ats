@@ -1,6 +1,5 @@
 from django.db import models
 from .doctors_and_others import Doctors
-from .category_and_others import Features
 
 
 def get_doctors_count():
@@ -11,7 +10,9 @@ class Statistic(models.Model):
     experts = models.IntegerField(default=get_doctors_count)
     rooms = models.IntegerField(default=0, blank=True)
     certificates = models.IntegerField(default=0, blank=True)
-    num_strollers = models.IntegerField(default=0, blank=True)
+    wheelchair = models.IntegerField(default=0, blank=True)
+    happy_patients = models.PositiveIntegerField(default=0)
+    awards = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = "Statistika"

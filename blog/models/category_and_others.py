@@ -41,7 +41,6 @@ class ReliableService(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     features = models.ManyToManyField(Features, blank=True)
-    work_schedule = models.TextField()
 
     class Meta:
         verbose_name = "ishonchli xizmat"

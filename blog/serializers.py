@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from .models.category_and_others import Category
+from .models.category_and_others import Category, Service
 from .models.doctors_and_others import Doctors
 from .models.statistic import Statistic
+from django.db.models import Avg
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -16,7 +17,39 @@ class DoctorsSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'position', 'specialty', 'experience', 'operations', 'certificates']
 
 
-class StatisticSerializer(serializers.ModelSerializer):
+class CommonStatisticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Statistic
-        fields = ['id', 'rooms', 'experts', 'certificates', 'num_strollers']
+        fields = ['id', 'rooms', 'experts', 'certificates', 'wheelchair']
+
+
+class FirstPageStatisticSerializer(serializers.ModelSerializer):
+    experience = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Statistic
+        fields = ['id', 'happy_patients', 'experts', 'awards', 'experience']
+
+    def get_experience(self, obj):
+        experiences = Doctors.objects.all().values_list('experience', flat=True)
+
+        numbers = []
+
+        for exp in experiences:
+            try:
+                numbers.append(float(exp))
+            except:
+                pass
+
+        if not numbers:
+            return 5
+
+        return int(sum(numbers) / len(numbers))
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = ['id', 'title', 'description', 'image']
+
+
