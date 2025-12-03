@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'connect',
     'rest_framework',
 
+    'drf_yasg'
+
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': "JWT token format: **Bearer &lt;your_token&gt;**"
+        }
+    }
+}
 
 
 # Database

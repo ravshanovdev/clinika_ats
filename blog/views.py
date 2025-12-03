@@ -8,11 +8,16 @@ from .models.statistic import Statistic
 from .serializers import CategorySerializer, DoctorsSerializer, CommonStatisticSerializer, \
     ServiceSerializer, FirstPageStatisticSerializer
 from rest_framework.permissions import AllowAny
+from drf_yasg.utils import swagger_auto_schema
 
 
 class GetCategoryAPIView(APIView):
     permission_classes = [AllowAny]
 
+    @swagger_auto_schema(
+        tags=['category'],
+        operation_summary='get all categories'
+    )
     def get(self, request):
         categories = Category.objects.all()
 
