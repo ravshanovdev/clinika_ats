@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models.category_and_others import Category, Service
 from .models.doctors_and_others import Doctors
 from .models.statistic import Statistic
-from django.db.models import Avg
+from .models.location import Location
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -53,3 +53,7 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description', 'image']
 
 
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ['id', 'name', 'address', 'latitude', 'longitude']

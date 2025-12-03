@@ -5,8 +5,9 @@ from rest_framework import status
 from .models.category_and_others import Category, Service
 from .models.doctors_and_others import Doctors
 from .models.statistic import Statistic
+from .models.location import Location
 from .serializers import CategorySerializer, DoctorsSerializer, CommonStatisticSerializer, \
-    ServiceSerializer, FirstPageStatisticSerializer
+    ServiceSerializer, FirstPageStatisticSerializer, LocationSerializer
 from rest_framework.permissions import AllowAny
 from drf_yasg.utils import swagger_auto_schema
 
@@ -63,6 +64,14 @@ class GetServiceAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class GetLocationAPIView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        location = Location.objects.all()
+        serializer = LocationSerializer(location, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
