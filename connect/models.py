@@ -1,9 +1,10 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Review(models.Model):
-    username = models.CharField(max_length=150)
-    description = models.TextField()
+    username = models.CharField(max_length=150, verbose_name=_('Username'))
+    description = models.TextField(verbose_name=_('Description'))
     grade = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
 
@@ -16,12 +17,12 @@ class Review(models.Model):
 
 
 class InfoContact(models.Model):
-    phone1 = models.CharField(max_length=20)
-    phone2 = models.CharField(max_length=20, blank=True)
+    phone1 = models.CharField(max_length=20, verbose_name=_('Phone'))
+    phone2 = models.CharField(max_length=20, blank=True, verbose_name=_('Phone'))
     email1 = models.EmailField()
     email2 = models.EmailField(blank=True)
-    address = models.TextField()
-    address2 = models.TextField(blank=True)
+    address = models.TextField(verbose_name=_('Address'))
+    address2 = models.TextField(blank=True, verbose_name=_('Address'))
 
     class Meta:
         verbose_name = "a'loqa ma'lumotlari"
@@ -32,10 +33,10 @@ class InfoContact(models.Model):
 
 
 class SendMessage(models.Model):
-    username = models.CharField(max_length=155)
-    phone = models.CharField(max_length=20)
+    username = models.CharField(max_length=155, verbose_name=_('Username'))
+    phone = models.CharField(max_length=20, verbose_name=_('Phone'))
     email = models.EmailField()
-    text = models.TextField(max_length=550)
+    text = models.TextField(max_length=550, verbose_name=_('Text'))
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

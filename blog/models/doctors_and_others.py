@@ -1,8 +1,9 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, verbose_name=_('Name'))
 
     class Meta:
         verbose_name = 'Kasb'
@@ -13,7 +14,7 @@ class Position(models.Model):
 
 
 class Specialty(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, verbose_name=_('Name'))
 
     class Meta:
         verbose_name = 'Mutaxasislik'
@@ -24,7 +25,7 @@ class Specialty(models.Model):
 
 
 class AdditionalFeatures(models.Model):
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=500, verbose_name=_('Description'))
 
     class Meta:
         verbose_name = "Qoshimcha Ma'lumotlar"
@@ -35,11 +36,11 @@ class AdditionalFeatures(models.Model):
 
 
 class Doctors(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, verbose_name=_('Name'))
     position = models.ForeignKey(Position, on_delete=models.CASCADE)
     specialty = models.ManyToManyField(Specialty, blank=True)
     experience = models.IntegerField(default=0)
-    operations = models.CharField(max_length=150)
+    operations = models.CharField(max_length=150, verbose_name=_('Operations'))
     certificates = models.ManyToManyField(AdditionalFeatures, blank=True)
 
     class Meta:

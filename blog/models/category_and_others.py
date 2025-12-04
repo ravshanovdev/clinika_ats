@@ -1,8 +1,9 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=155)
+    name = models.CharField(max_length=155, verbose_name=_('Name'))
 
     class Meta:
         verbose_name = "Bo'lim"
@@ -13,8 +14,8 @@ class Category(models.Model):
 
 
 class Service(models.Model):
-    title = models.CharField(max_length=155)
-    description = models.TextField()
+    title = models.CharField(max_length=155, verbose_name=_('Title'))
+    description = models.TextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     class Meta:
@@ -26,7 +27,7 @@ class Service(models.Model):
 
 
 class Features(models.Model):
-    name = models.CharField(max_length=155)
+    name = models.CharField(max_length=155, verbose_name=_('Name'))
 
     class Meta:
         verbose_name = "Kichik ma'lumot"
@@ -37,8 +38,8 @@ class Features(models.Model):
 
 
 class ReliableService(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    description = models.TextField(verbose_name=_('Description'))
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     features = models.ManyToManyField(Features, blank=True)
 
