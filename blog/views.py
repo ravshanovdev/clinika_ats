@@ -9,15 +9,14 @@ from .models.location import Location
 from .serializers import CategorySerializer, DoctorsSerializer, CommonStatisticSerializer, \
     ServiceSerializer, FirstPageStatisticSerializer, LocationSerializer
 from rest_framework.permissions import AllowAny
-from drf_yasg.utils import swagger_auto_schema
+from drf_spectacular.utils import extend_schema
 
 
 class GetCategoryAPIView(APIView):
     permission_classes = [AllowAny]
 
-    @swagger_auto_schema(
-        tags=['category'],
-        operation_summary='get all categories'
+    @extend_schema(
+        description="get category",
     )
     def get(self, request):
         categories = Category.objects.all()

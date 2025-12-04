@@ -4,15 +4,18 @@ from rest_framework import status
 from .serializers import SendMessageSerializer, InfoContactSerializer, ReviewSerializer
 from rest_framework.permissions import AllowAny
 from .models import InfoContact, Review
-from drf_yasg.utils import swagger_auto_schema
+from drf_spectacular.utils import extend_schema
 
 
 class SendMessageAPIView(APIView):
     permission_classes = [AllowAny]
 
-    @swagger_auto_schema(
-        request_body=SendMessageSerializer,
-        responses={200: 'message sent.!'}
+    @extend_schema(
+        request=SendMessageSerializer,
+        responses={201: SendMessageSerializer},
+        tags=['connect'],
+        summary="send to message",
+        description="tg botga habar yuborish"
     )
     def post(self, request):
         serializer = SendMessageSerializer(data=request.data)
