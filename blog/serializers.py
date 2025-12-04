@@ -1,8 +1,20 @@
 from rest_framework import serializers
 from .models.category_and_others import Category, Service
-from .models.doctors_and_others import Doctors
+from .models.doctors_and_others import Doctors, Specialty, AdditionalFeatures
 from .models.statistic import Statistic
 from .models.location import Location
+
+
+class AdditionalFeaturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AdditionalFeatures
+        fields = ['id', 'description', 'description_uz', "description_ru", "description_en"]
+
+
+class SpecialtySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Specialty
+        fields = "__all__"
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -12,9 +24,13 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class DoctorsSerializer(serializers.ModelSerializer):
+    specialty = SpecialtySerializer(many=True)
+    certificates = AdditionalFeaturesSerializer(many=True)
+
     class Meta:
         model = Doctors
-        fields = ['id', 'name', 'position', 'specialty', 'experience', 'operations', 'certificates']
+        fields = ['id', 'name', 'position', 'specialty', 'experience',
+                  'operations', 'certificates', 'image']
 
 
 class CommonStatisticSerializer(serializers.ModelSerializer):

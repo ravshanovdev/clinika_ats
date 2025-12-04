@@ -37,6 +37,7 @@ class AdditionalFeatures(models.Model):
 
 class Doctors(models.Model):
     name = models.CharField(max_length=150, verbose_name=_('Name'))
+    image = models.ImageField(upload_to='images/', blank=True)
     position = models.ForeignKey(Position, on_delete=models.CASCADE)
     specialty = models.ManyToManyField(Specialty, blank=True)
     experience = models.IntegerField(default=0)
