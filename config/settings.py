@@ -164,7 +164,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://brosmedmax.pythonanywhere.com/",
+    "https://brosmedmax.pythonanywhere.com",
     "http://localhost:3000",
 
 ]
