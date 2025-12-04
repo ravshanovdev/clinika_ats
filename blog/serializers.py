@@ -1,8 +1,14 @@
 from rest_framework import serializers
 from .models.category_and_others import Category, Service
-from .models.doctors_and_others import Doctors, Specialty, AdditionalFeatures
+from .models.doctors_and_others import Doctors, Specialty, AdditionalFeatures, Position
 from .models.statistic import Statistic
 from .models.location import Location
+
+
+class PositionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Position
+        fields = "__all__"
 
 
 class AdditionalFeaturesSerializer(serializers.ModelSerializer):
@@ -26,6 +32,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class DoctorsSerializer(serializers.ModelSerializer):
     specialty = SpecialtySerializer(many=True)
     certificates = AdditionalFeaturesSerializer(many=True)
+    position = PositionSerializer()
 
     class Meta:
         model = Doctors

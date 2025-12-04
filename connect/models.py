@@ -7,6 +7,7 @@ class Review(models.Model):
     description = models.TextField(verbose_name=_('Description'))
     grade = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'bemor qaydlari'
