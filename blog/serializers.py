@@ -9,28 +9,28 @@ class AboutUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AboutUs
         fields = ["id",
-                  "title_uz", "title_ru", "title_en",
-                  "description_uz", "description_ru", "description_en",
-                  "working_graph_uz", "working_graph_ru", "working_graph_en",
-                  "features_uz", "features_ru", "features_en"]
+                  "title",
+                  "description",
+                  "working_graph",
+                  "features"]
 
 
 class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
-        fields = "__all__"
+        fields = ['id', 'name']
 
 
 class AdditionalFeaturesSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdditionalFeatures
-        fields = ['id', 'description', 'description_uz', "description_ru", "description_en"]
+        fields = ['id', 'description']
 
 
 class SpecialtySerializer(serializers.ModelSerializer):
     class Meta:
         model = Specialty
-        fields = "__all__"
+        fields = ['id', 'name']
 
 
 class CategorySerializer(serializers.ModelSerializer):
