@@ -1,8 +1,18 @@
 from rest_framework import serializers
 from .models.category_and_others import Category, Service
 from .models.doctors_and_others import Doctors, Specialty, AdditionalFeatures, Position
-from .models.statistic import Statistic
+from .models.statistic import Statistic, AboutUs
 from .models.location import Location
+
+
+class AboutUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutUs
+        fields = ["id",
+                  "title_uz", "title_ru", "title_en",
+                  "description_uz", "description_ru", "description_en",
+                  "working_graph_uz", "working_graph_ru", "working_graph_en",
+                  "features_uz", "features_ru", "features_en"]
 
 
 class PositionSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import GetCategoryAPIView, GetDoctorsGenericAPIView, GetCommonPageStatisticAPIView,\
-    GetServiceAPIView, GetFirstPageStatisticAPIView, GetLocationAPIView
+    GetServiceAPIView, GetFirstPageStatisticAPIView, GetLocationAPIView, GetAboutUsAPIView
 
 
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
     path('get-services/', GetServiceAPIView.as_view(), ),
     path('get-first-page-statistic/', GetFirstPageStatisticAPIView.as_view(), ),
     path('get-location/', GetLocationAPIView.as_view(), ),
+    path('get-about-us/', GetAboutUsAPIView.as_view(), ),
 
 
 

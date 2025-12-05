@@ -4,12 +4,21 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models.category_and_others import Category, Service
 from .models.doctors_and_others import Doctors
-from .models.statistic import Statistic
+from .models.statistic import Statistic, AboutUs
 from .models.location import Location
 from .serializers import CategorySerializer, DoctorsSerializer, CommonStatisticSerializer, \
-    ServiceSerializer, FirstPageStatisticSerializer, LocationSerializer
+    ServiceSerializer, FirstPageStatisticSerializer, LocationSerializer, AboutUsSerializer
 from rest_framework.permissions import AllowAny
 from drf_spectacular.utils import extend_schema
+
+
+class GetAboutUsAPIView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        about_us = AboutUs.objects.all()
+        serializer = AboutUsSerializer(about_us, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class GetCategoryAPIView(APIView):
