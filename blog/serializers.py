@@ -12,7 +12,9 @@ class AboutUsSerializer(serializers.ModelSerializer):
                   "title",
                   "description",
                   "working_graph",
-                  "features"]
+                  "features",
+                  "image"
+                  ]
 
 
 class PositionSerializer(serializers.ModelSerializer):
