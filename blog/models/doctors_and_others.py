@@ -17,8 +17,8 @@ class Specialty(models.Model):
     name = models.CharField(max_length=250, verbose_name=_('Name'))
 
     class Meta:
-        verbose_name = 'Mutaxasislik'
-        verbose_name_plural = 'Mutaxasisliklar'
+        verbose_name = 'lavozim'
+        verbose_name_plural = 'lavozimlar'
 
     def __str__(self):
         return self.name

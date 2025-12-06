@@ -4,5 +4,5 @@ from .models.doctors_and_others import Position, Specialty, AdditionalFeatures, 
 from .models.statistic import Statistic, AboutUs
 from .models.location import Location
 
-admin.site.register([Category, Service, Features, Position, Specialty,
+admin.site.register([Service, Features, Position, Specialty,
                      AdditionalFeatures, Doctors, Statistic, AboutUs, Location])

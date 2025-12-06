@@ -4,7 +4,7 @@ from .views import GetCategoryAPIView, GetDoctorsGenericAPIView, GetCommonPageSt
 
 
 urlpatterns = [
-    path('get_categories/', GetCategoryAPIView.as_view(), ),
+    # path('get_categories/', GetCategoryAPIView.as_view(), ),
     path('get_doctors/', GetDoctorsGenericAPIView.as_view(), ),
     path('get-common-statistic/', GetCommonPageStatisticAPIView.as_view(), ),
     path('get-services/', GetServiceAPIView.as_view(), ),
