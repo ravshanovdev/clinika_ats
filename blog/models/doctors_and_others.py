@@ -6,8 +6,8 @@ class Position(models.Model):
     name = models.CharField(max_length=250, verbose_name=_('Name'))
 
     class Meta:
-        verbose_name = 'Kasb'
-        verbose_name_plural = 'Kasblar'
+        verbose_name = 'lavozim'
+        verbose_name_plural = 'Lavozimlar'
 
     def __str__(self):
         return self.name
@@ -17,8 +17,8 @@ class Specialty(models.Model):
     name = models.CharField(max_length=250, verbose_name=_('Name'))
 
     class Meta:
-        verbose_name = 'lavozim'
-        verbose_name_plural = 'lavozimlar'
+        verbose_name = 'mutaxasislik'
+        verbose_name_plural = 'mutaxasisliklar'
 
     def __str__(self):
         return self.name
