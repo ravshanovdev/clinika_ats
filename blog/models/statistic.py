@@ -26,7 +26,7 @@ class AboutUs(models.Model):
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     title = models.CharField(max_length=155)
     description = models.TextField()
-    working_graph = models.JSONField(default=dict)
+    working_graph = models.CharField(max_length=255)
     features = models.TextField(blank=True)
 
     class Meta:
@@ -35,7 +35,6 @@ class AboutUs(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 
