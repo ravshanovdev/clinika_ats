@@ -23,7 +23,7 @@ class InfoContact(models.Model):
     email1 = models.EmailField()
     email2 = models.EmailField(blank=True)
     address = models.TextField(verbose_name=_('Address'))
-    address2 = models.TextField(blank=True, verbose_name=_('Address'))
+    address2 = models.TextField(blank=True, verbose_name=_('Address2'))
 
     class Meta:
         verbose_name = "a'loqa ma'lumotlari"
@@ -49,8 +49,8 @@ class SendMessage(models.Model):
 
 
 class TgAdmin(models.Model):
-    username = models.CharField(max_length=150)
-    chat_id = models.CharField(max_length=100)
+    username = models.CharField(max_length=150, blank=True)
+    chat_id = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = 'telegram admin'

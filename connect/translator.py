@@ -7,4 +7,8 @@ class ReviewTranslationOption(TranslationOptions):
     fields = ['description']
 
 
+@register(InfoContact)
+class InfoContactTranslationOption(TranslationOptions):
+    fields = ('address', 'address2')
+
 

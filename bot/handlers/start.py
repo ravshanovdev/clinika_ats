@@ -1,6 +1,8 @@
 from aiogram import types, Router
 from aiogram.filters import Command
 from asgiref.sync import sync_to_async
+from django.contrib.auth import user_logged_in
+
 from connect.models import TgAdmin, SendMessage
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
@@ -9,7 +11,24 @@ router = Router()
 
 @router.message(Command('start'))
 async def start_cmd(msg: types.Message):
-    if msg.from_user.username in ['maybe_0101', 'jamzayn10']:
+        username = msg.from_user.username
+
+        try:
+            admin = await sync_to_async(TgAdmin.objects.get)(username=username)
+        except TgAdmin.DoesNotExist:
+            await msg.answer("Salom! Siz bu botdan foydalana olish huquqiga ega emas siz.!")
+            return
+
+        changed = False
+
+        if admin and not admin.chat_id:
+            admin.chat_id = msg.from_user.id
+            changed = True
+
+        if changed:
+            await sync_to_async(admin.save)()
+
+
         await sync_to_async(TgAdmin.objects.get_or_create)(
                 username=msg.from_user.username,
                 chat_id=msg.from_user.id
@@ -22,9 +41,6 @@ async def start_cmd(msg: types.Message):
         )
 
         await msg.answer('Salom! Statistikalarni olish uchun:', reply_markup=keyboard)
-
-    elif msg.from_user.username not in ['maybe_0101', 'jamzayn10']:
-        await msg.answer('Salom! Siz bu botdan foydalana olish huquqiga ega emas siz.!')
 
 
 @router.message(lambda msg: msg.text == 'today')
